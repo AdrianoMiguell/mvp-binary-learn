@@ -1,0 +1,516 @@
+/* ============================================
+   Binary Learning — MVP stylesheet
+   ============================================ */
+
+:root {
+  --teal-dark: #0f9c8d;
+  --teal: #1abc9c;
+  --teal-light: #6fe3cf;
+  --purple: #b9a6e0;
+  --purple-light: #cabdec;
+  --orange: #f6c690;
+  --orange-dark: #eab06a;
+  --green-card: #7fe3b4;
+  --green-card-dark: #58cf98;
+  --red: #f2716f;
+  --gray-circle: #d9d9d9;
+  --bg: #f7f7f8;
+  --text: #232323;
+  --text-soft: #6b7280;
+
+  --font-display: "Baloo 2", "Quicksand", sans-serif;
+  --font-body: "Nunito", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, .brand, .display-font {
+  font-family: var(--font-display);
+}
+
+main {
+  flex: 1;
+}
+
+a { text-decoration: none; }
+
+/* ---------- Top bar (in-app header) ---------- */
+.app-header {
+  background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+  color: #fff;
+  padding: .9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header .brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: .25rem;
+}
+
+.avatar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e7ddfb;
+  color: #7c5fc7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  border: none;
+}
+
+/* ---------- Home hero (no header) ---------- */
+.home-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+}
+
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
+.home-hero .content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1rem;
+}
+
+.home-hero h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 2.25rem;
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  filter: blur(0px);
+}
+
+.blob-left {
+  left: -60px;
+  bottom: -60px;
+  width: 260px;
+  height: 260px;
+  background: var(--purple);
+  border-radius: 58% 42% 61% 39% / 47% 45% 55% 53%;
+}
+
+.blob-right {
+  right: -70px;
+  bottom: -80px;
+  width: 260px;
+  height: 260px;
+  background: var(--teal-light);
+  border-radius: 45% 55% 40% 60% / 55% 40% 60% 45%;
+}
+
+/* ---------- Pill buttons ---------- */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  width: 260px;
+  max-width: 80vw;
+  padding: .7rem 1rem;
+  border-radius: 999px;
+  border: 2px solid var(--teal);
+  background: #fff;
+  color: var(--teal-dark);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 auto .9rem auto;
+  transition: transform .12s ease, background .12s ease, color .12s ease;
+}
+
+.btn-pill:hover {
+  background: var(--teal);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------- Wave footer decoration ---------- */
+.wave-footer {
+  position: relative;
+  height: 60px;
+  background: var(--teal);
+  margin-top: 2rem;
+}
+
+.wave-footer svg {
+  position: absolute;
+  top: -39px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+}
+
+/* ---------- Section content wrapper ---------- */
+.page-body {
+  padding: 2.5rem 1.5rem 1rem 1.5rem;
+  position: relative;
+}
+
+/* ---------- Fase cards ---------- */
+.fase-card {
+  border-radius: 22px;
+  padding: 1.6rem 1.6rem 1.2rem 1.6rem;
+  min-height: 150px;
+  display: block;
+  color: var(--text);
+  position: relative;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.fase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.08);
+  color: var(--text);
+}
+
+.fase-card.binarios { background: linear-gradient(160deg, var(--orange), var(--orange-dark)); }
+.fase-card.octal { background: linear-gradient(160deg, var(--green-card), var(--green-card-dark)); }
+
+.fase-card h3 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: .25rem;
+}
+
+.fase-card .cube-icon {
+  position: absolute;
+  right: 1.2rem;
+  top: 1.1rem;
+  font-size: 2.4rem;
+  opacity: .85;
+}
+
+.fase-card .meta {
+  font-size: .85rem;
+  display: flex;
+  gap: .9rem;
+  margin-top: .6rem;
+  font-weight: 600;
+}
+
+/* ---------- Next arrow ---------- */
+.next-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--teal);
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: #fff;
+  float: right;
+}
+
+.next-arrow:hover { background: var(--teal); color: #fff; }
+
+/* ---------- Level circles ---------- */
+.level-circle-wrap {
+  text-align: center;
+}
+
+.level-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 auto .6rem auto;
+  background: var(--gray-circle);
+  color: #7a7a7a;
+  border: none;
+  cursor: pointer;
+}
+
+.level-circle.unlocked {
+  background: var(--orange);
+  color: var(--text);
+}
+
+.level-circle.completed {
+  background: var(--green-card);
+  color: var(--text);
+}
+
+.level-circle:disabled {
+  cursor: not-allowed;
+  opacity: .8;
+}
+
+.level-stars i { font-size: .95rem; color: #c9c9c9; }
+.level-stars i.filled { color: #f5b942; }
+
+/* ---------- Quiz header (progress) ---------- */
+.quiz-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.25rem;
+}
+
+.quiz-meta .fase-label {
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.quiz-progress {
+  flex: 1;
+  margin: 0 1rem;
+  height: 8px;
+  background: #e5e5e5;
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 140px;
+}
+
+.quiz-progress .bar {
+  height: 100%;
+  background: var(--gray-circle);
+  background: #b7b7b7;
+  transition: width .3s ease;
+}
+
+.stat-pill {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .95rem;
+}
+
+.stat-pill.heart { color: var(--red); }
+.stat-pill.star { color: #eab308; }
+
+.quiz-level-title {
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-soft);
+  font-weight: 700;
+  letter-spacing: .02em;
+  margin-bottom: .5rem;
+}
+
+/* ---------- Question options ---------- */
+.question-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 1.75rem;
+}
+
+.option-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.option-grid.two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 560px) {
+  .option-grid.two-col { grid-template-columns: 1fr; }
+}
+
+.opt-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  transition: filter .1s ease, transform .08s ease;
+}
+
+.opt-btn:active { transform: scale(.98); }
+
+.opt-btn.true-false-false { background: var(--red); }
+.opt-btn.true-false-true { background: var(--teal); }
+
+.opt-btn.mc {
+  background: #fff;
+  color: var(--text);
+  border: 2px solid #e5e5e5;
+  text-align: left;
+}
+
+.opt-btn.mc:hover { border-color: var(--teal); }
+
+.opt-btn.correct { background: var(--teal) !important; color: #fff !important; border-color: var(--teal) !important; }
+.opt-btn.wrong { background: var(--red) !important; color: #fff !important; border-color: var(--red) !important; }
+
+/* matching */
+.match-col { display: flex; flex-direction: column; gap: .75rem; }
+
+.match-item {
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  padding: .65rem 1rem;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.match-item.selected { border-color: var(--teal); background: #eafaf6; }
+.match-item.matched { border-color: var(--green-card-dark); background: #eafaf6; opacity: .6; cursor: default; }
+.match-item.wrong-flash { border-color: var(--red); background: #fdeceb; }
+
+/* ---------- Help floating button ---------- */
+.help-fab {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+  padding: .55rem 1rem;
+  font-weight: 700;
+  font-size: .85rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  z-index: 5;
+}
+
+/* ---------- Profile dropdown ---------- */
+.profile-dropdown {
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  padding: .5rem;
+  min-width: 170px;
+}
+
+.profile-dropdown .dropdown-item {
+  border-radius: 8px;
+  padding: .55rem .75rem;
+  font-weight: 600;
+  font-size: .92rem;
+}
+
+.profile-dropdown .dropdown-item i {
+  margin-right: .5rem;
+  color: var(--teal-dark);
+}
+
+.profile-dropdown .dropdown-item.text-danger i {
+  color: var(--red);
+}
+
+.profile-dropdown .dropdown-item:hover {
+  background: #eafaf6;
+}
+
+/* ---------- Modal tweaks ---------- */
+.modal-content {
+  border-radius: 18px;
+  border: none;
+}
+
+.modal-title { font-family: var(--font-display); font-weight: 700; }
+
+.profile-modal-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #e7ddfb;
+  color: #7c5fc7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto .75rem auto;
+}
+
+.profile-name { text-align: center; font-weight: 700; margin-bottom: 1.25rem; }
+
+.modal-menu-btn {
+  display: block;
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  background: var(--teal);
+  color: #fff;
+  font-weight: 700;
+  padding: .65rem 1rem;
+  margin-bottom: .7rem;
+  text-align: left;
+  padding-left: 1.4rem;
+}
+
+.modal-menu-btn i { margin-right: .6rem; }
+
+.modal-logout-btn {
+  display: block;
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  padding: .65rem 1rem;
+  margin-top: .5rem;
+}
+
+.intro-modal .btn-start {
+  background: var(--teal);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: .55rem 1.6rem;
+}
+
+.toast-container-custom {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+}

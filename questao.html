@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binary Learning — Questão</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <button class="icon-btn" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas" aria-label="Menu">
+    <i class="bi bi-list"></i>
+  </button>
+  <span class="brand">Binary Learning</span>
+  <div class="dropdown">
+    <button class="avatar-btn" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Perfil">
+      <i class="bi bi-person-fill"></i>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end profile-dropdown">
+      <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profileModal"><i class="bi bi-person-circle"></i> Perfil</a></li>
+      <li><a class="dropdown-item text-danger" href="#" onclick="blLogout(event)"><i class="bi bi-box-arrow-right"></i> Sair</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="page-body">
+    <div class="quiz-level-title" id="levelTitle">Nível 1 - Introdução aos binários</div>
+
+    <div class="quiz-meta">
+      <span class="fase-label" id="faseLabel">Binários</span>
+      <div class="quiz-progress"><div class="bar" id="progressBar" style="width:0%"></div></div>
+      <span class="stat-pill heart"><i class="bi bi-heart-fill"></i> <span id="heartsCount">3</span></span>
+      <span class="stat-pill star"><i class="bi bi-star-fill"></i> <span id="starsCount">0</span></span>
+    </div>
+
+    <p class="question-text">
+      <span id="questionNumber"></span> <span id="questionText"></span>
+    </p>
+
+    <div id="optionsArea"></div>
+  </div>
+</main>
+
+<button class="help-fab" data-bs-toggle="modal" data-bs-target="#helpModal">
+  <i class="bi bi-question-circle"></i> Ajuda
+</button>
+
+<!-- Help modal -->
+<div class="modal fade" id="helpModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <div class="modal-body">
+        <h5 class="modal-title mb-3">Como jogar</h5>
+        <p>Responda cada pergunta sobre o sistema numérico da fase. Cada erro custa um coração; cada acerto soma uma estrela.</p>
+        <p class="mb-0">Se os corações acabarem, você precisa tentar o nível novamente.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Completion modal -->
+<div class="modal fade" id="completionModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3 text-center">
+      <div class="modal-body">
+        <i class="bi bi-trophy-fill" style="font-size:2.5rem;color:#eab308;"></i>
+        <h5 class="modal-title mt-2 mb-2">Nível concluído!</h5>
+        <p>Você terminou com <strong id="completionStars">3</strong> estrela(s).</p>
+        <button class="btn-start" id="btnVoltarNiveis">Voltar aos níveis</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Game over modal -->
+<div class="modal fade" id="gameOverModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3 text-center">
+      <div class="modal-body">
+        <i class="bi bi-heartbreak-fill" style="font-size:2.5rem;color:var(--red);"></i>
+        <h5 class="modal-title mt-2 mb-2">Você ficou sem corações</h5>
+        <p>Sem problemas, tente esse nível de novo!</p>
+        <button class="btn-start" id="btnTentarNovamente">Tentar novamente</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Offcanvas menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="menuOffcanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title display-font">Binary Learning</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column gap-2">
+    <a href="index.html" class="modal-menu-btn text-decoration-none"><i class="bi bi-house-door-fill"></i>Início</a>
+    <a href="fases.html" class="modal-menu-btn text-decoration-none"><i class="bi bi-controller"></i>Jogar</a>
+    <a href="#" class="modal-menu-btn text-decoration-none"><i class="bi bi-bookmark-fill"></i>Aprender</a>
+    <a href="#" class="modal-menu-btn text-decoration-none"><i class="bi bi-box-seam"></i>Instruções</a>
+  </div>
+</div>
+
+<!-- Profile modal -->
+<div class="modal fade" id="profileModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <div class="modal-body">
+        <div class="profile-modal-avatar"><i class="bi bi-person-fill"></i></div>
+        <p class="profile-name">Adriano Migüell</p>
+        <a href="#" class="modal-menu-btn text-decoration-none d-flex align-items-center"><i class="bi bi-bookmark-fill"></i> Aprender</a>
+        <a href="#" class="modal-menu-btn text-decoration-none d-flex align-items-center"><i class="bi bi-box-seam"></i> Instruções</a>
+        <a href="#" class="modal-menu-btn text-decoration-none d-flex align-items-center"><i class="bi bi-bag-fill"></i> Loja de itens</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/questao.js"></script>
+</body>
+</html>
